@@ -157,7 +157,8 @@ function jsCallDeleteFile(btn, text, o_id) {
 
 <script src="third_party/clipboard/clipboard.min.js"></script>
 
-{* {include file="bootstrap.inc.tpl"} *}
+<link rel="stylesheet" href="gui/icons/font-awesome-4.5.0/css/font-awesome.min.css">
+{include file="bootstrap.inc.tpl"}
 
 </head>
 {*
@@ -184,8 +185,7 @@ IMPORTANT: if you change value, you need to chang init_args() logic on execSetRe
               {if #ROUND_TC_TITLE#}Nifty('div.exec_tc_title');{/if}"
       onUnload="storeWindowSize('TCExecPopup')">
 
-<h1 class="title">
-	{$labels.title_t_r_on_build} {$gui->build_name|escape}
+<h1 class="title">{$labels.title_t_r_on_build} {$title_sep} {$gui->testplan_div_title} > {$gui->build_name|escape}
 	{if $gui->platform_info.name != ""}
 	  {$title_sep_type3}{$labels.platform}{$title_sep}{$gui->platform_info.name|escape}
 	{/if}
@@ -243,21 +243,28 @@ IMPORTANT: if you change value, you need to chang init_args() logic on execSetRe
       {$gui->direct_link}</a></div>
 
       
-      <input type="button" name="print" id="print" value="{$labels.btn_print}" onclick="javascript:window.print();" />
-      <input type="button" id="toggle_history_on_off"  name="{$gui->history_status_btn_name}"
-             value="{lang_get s=$gui->history_status_btn_name}" 
+      <button type="button" class="btn btn-default btn-xs" name="print" id="print" onclick="javascript:window.print();" >
+        <i class="fa fa-print"></i> {$labels.btn_print}
+      </button>  
+
+      <button class="btn btn-default btn-xs" id="toggle_history_on_off"  name="{$gui->history_status_btn_name}"
+             value="" 
              onclick="javascript:toogleRequiredOnShowHide('bug_summary');
                       javascript:toogleRequiredOnShowHide('artifactVersion');
                       javascript:toogleRequiredOnShowHide('artifactComponent');
-                      execSetResults.submit();"/>
+                      execSetResults.submit();">
+         <i class="fa fa-eye"></i> {lang_get s=$gui->history_status_btn_name}
+      </button>
 
       {if $gui->grants->execute}
-      <input type="button" id="pop_up_import_button" name="import_xml_button"
-             value="{$labels.import_xml_results}"
+      <button type="button"  class="btn btn-default btn-xs" id="pop_up_import_button" name="import_xml_button"
              onclick="javascript: openImportResult('import_xml_results',{$gui->tproject_id},
-                                                   {$gui->tplan_id},{$gui->build_id},{$gui->platform_id});" />
+                                                   {$gui->tplan_id},{$gui->build_id},{$gui->platform_id});">
+         <i class="fa fa-file-code-o"></i> {$labels.import_xml_results}
+      </button>
           
       {/if}
+
       
       {if $tlCfg->exec_cfg->enable_test_automation}
         <input type="submit" id="execute_cases" name="execute_cases"
@@ -362,6 +369,9 @@ IMPORTANT: if you change value, you need to chang init_args() logic on execSetRe
     	{/if}
 	{/if}
 
+  {* ------------------------------------------------------- *}
+  {* Test Details Block                                    *}
+  {* ------------------------------------------------------- *}
   {if $bulkExec}
     {include file="execute/execSetResultsBulk.inc.tpl"}
   {/if}

@@ -101,14 +101,21 @@ TestLink Open Source Project - http://testlink.sourceforge.net/
       <td class="exec_tcstep_note">
         <textarea class="step_note_textarea" 
           name="step_notes[{$step_info.id}]" id="step_notes_{$step_info.id}" 
-          cols="40" rows="5">{$step_info.execution_notes|escape}</textarea>
+          cols="40">{$step_info.execution_notes|escape}</textarea>
+
+        {if $gui->allowStepAttachments && $att_ena}
+          {include file="attachments_simple.inc.tpl" attach_id=$step_info.id}
+        {/if} 
       </td>
 
       <td>
         <select class="step_status" name="step_status[{$step_info.id}]" id="step_status_{$step_info.id}">
           {html_options options=$gui->execStepStatusValues selected=$step_info.execution_status}
-
         </select> <br>
+<!-- 
+        {html_radios name='step_status[{$step_info.id}]' id='step_status_{$step_info.id}'
+               options=$gui->execStepStatusValues
+               selected=$step_info.execution_status} -->
         
         {if $gui->tlCanCreateIssue}
           {include file="execute/add_issue_on_step.inc.tpl" 
@@ -130,13 +137,7 @@ TestLink Open Source Project - http://testlink.sourceforge.net/
     </tr> 
   {/if}
 
-  {if $gui->allowStepAttachments && $att_ena}
-    <tr>
-      <td colspan=6>
-      {include file="attachments_simple.inc.tpl" attach_id=$step_info.id}
-      </td>
-    </tr> 
-  {/if} 
+
 
   {if $ghost_control}
     <tr class='ghost' style='display:none'><td></td><td>{$step_info.ghost_action}</td><td>{$step_info.ghost_result}</td></tr>    

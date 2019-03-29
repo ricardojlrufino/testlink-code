@@ -17,11 +17,10 @@ Rev:
 <input type='hidden' id="{$show_hide_container_view_status_id}"
          name="{$show_hide_container_view_status_id}"  value="0" />
 
-<div class="x-panel-header x-unselectable">
-	<div class="x-tool x-tool-toggle" style="background-position:0 -75px; float:left;"
-		onclick="show_hide('{$show_hide_container_id}',
+<div class="x-panel-header x-unselectable cursor-pointer" onclick="show_hide('{$show_hide_container_id}',
 	              '{$show_hide_container_view_status_id}',
 	              document.getElementById('{$show_hide_container_id}').style.display=='none')">
+	<div class="x-tool x-tool-toggle" style="background-position:0 -75px; float:left;">
 	</div>
 	<span style="padding:2px;">{$show_hide_container_title}</span>
 </div>

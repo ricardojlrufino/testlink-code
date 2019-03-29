@@ -16,7 +16,7 @@ Author : franciscom
     
      
     <div class="exec_test_spec">
-    <table class="simple">
+    <table class="simple" style="border: 1px solid #99bbe8">
     
     {$freshAirBeforeSteps = 0}
     {if '' != $args_tc_exec.summary }

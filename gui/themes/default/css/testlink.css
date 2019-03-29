@@ -790,9 +790,9 @@ div.test_exec {
 }
 
 div.exec_test_spec {
-	background: 	#FFC;
-	color: 			black;
-	padding: 		12px;
+	/*background: 	#FFC;*/
+	/*color: 			black;*/
+	/*padding: 		12px;*/
 }
 
 
@@ -1132,4 +1132,21 @@ div.form-border {
 #footerTXT{
 	float :left;
 }
+
+.cursor-pointer{
+  cursor: pointer;
+}
+
+.table-condensed>tbody>tr>td{
+	padding: 2px !important;
+}
+
+.step_note_textarea{
+	resize:both;
+}
+
+[hidden] {
+  display: none !important;
+}
+
 /* ----- END ------------------------------------------------------------------------- */
